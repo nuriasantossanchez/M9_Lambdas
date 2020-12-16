@@ -1,21 +1,14 @@
-package com.lambdas.project.domain;
+package com.lambdas.project.domain.utils.startwithandsizedstring;
 
 import java.util.*;
 import java.util.function.Supplier;
 
 import static java.util.stream.Collectors.*;
 
-public class UtilsLambda {
+public class StartWithAndSizedUtils {
 
-    private static final List<String> names = Arrays.asList(
-            "Ann","Ais","Loren","Ala","Brian","Kevin","Ais","aut","Amstel","Aina","Ag","Agg","Ann"
-    );
-    public static final Supplier<Integer> sized = ()->3;
-    public static final Supplier<Character> startWithCharacter = ()->'A';
-
-    public static List<String> getNames() {
-        return names;
-    }
+    private static final Supplier<Integer> sized = ()->3;
+    private static final Supplier<Character> startWithCharacter = ()->'A';
 
     public static Supplier<Integer> getSized() {
         return sized;
@@ -32,9 +25,9 @@ public class UtilsLambda {
                 .collect(toList());
     }
 
-    public List<String> getNamesStartWithAndSized() {
-        return  filter(this.names, s -> s.charAt(0) == this.startWithCharacter.get()
-                && s.length() == this.sized.get());
+    public List<String> getNamesStartWithAndSized(List<String> names) {
+        return filter(names, s -> s.charAt(0) == this.startWithCharacter.get()
+                            && s.length() == this.sized.get());
     }
 
     public List<String> filter(List<String> names, Predicate p) {

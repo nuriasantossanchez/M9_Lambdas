@@ -1,21 +1,21 @@
 package com.lambdas.project.application;
 
-import com.lambdas.project.domain.StartWithAndSizedPredicate;
-import com.lambdas.project.domain.UtilsLambda;
+import com.lambdas.project.domain.utils.evenoddnumber.EvenOddUtils;
+import com.lambdas.project.domain.utils.evenoddnumber.RandomNumber;
+import com.lambdas.project.domain.utils.startwithandsizedstring.StartWithAndSizedPredicate;
+import com.lambdas.project.domain.utils.startwithandsizedstring.StartWithAndSizedUtils;
 
 import java.util.List;
-import java.util.function.Supplier;
 
 
 public class Controller {
     private static Controller instance=null;
-    private UtilsLambda utilsLambda;
-    public static final List<String> names = UtilsLambda.getNames();
-    public static final Supplier<Integer> sized = UtilsLambda.getSized();
-    public static final Supplier<Character> startWithCharacter = UtilsLambda.getStartWithCharacter();
+    private StartWithAndSizedUtils startWithAndSizedUtils;
+    private EvenOddUtils evenOddUtils;
 
     private Controller() {
-        utilsLambda = new UtilsLambda();
+        startWithAndSizedUtils = new StartWithAndSizedUtils();
+        evenOddUtils =new EvenOddUtils();
     }
 
     public static Controller getInstance(){
@@ -27,17 +27,32 @@ public class Controller {
     }
 
     public List<String> getNamesStartWithAndSizedParameterized(List<String> names, Character startWith, Integer sized){
-        return utilsLambda.getNamesStartWithAndSized(names,startWith,sized);
+        return startWithAndSizedUtils.getNamesStartWithAndSized(names,startWith,sized);
     }
 
     public List<String> getNamesStartWithAndSizedPredicate(List<String> names){
-        return utilsLambda.filter(names, new StartWithAndSizedPredicate());
+        return startWithAndSizedUtils.filter(names, new StartWithAndSizedPredicate());
     }
 
-    public List<String> getNamesStartWithAndSizedLambda(){
-        return utilsLambda.getNamesStartWithAndSized();
+    public List<String> getNamesStartWithAndSizedLambda(List<String> names){
+        return startWithAndSizedUtils.getNamesStartWithAndSized(names);
+    }
+    public String getEvenOddListNumbers(List<Integer> numbers){
+        return evenOddUtils.getEvenOddNumbers(numbers);
     }
 
+    public String getEvenOddVarargsNumbers(Integer...i){
+        return evenOddUtils.getEvenOddNumbers(i);
+    }
+
+    public String getEvenOddRandomNumbers(){
+        return evenOddUtils.getEvenOddNumbers();
+
+    }
+
+    public RandomNumber getRandomNumbers() {
+        return evenOddUtils.getRandomNumbers();
+    }
 
 
 }
