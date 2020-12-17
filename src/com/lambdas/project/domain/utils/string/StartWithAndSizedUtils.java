@@ -1,4 +1,4 @@
-package com.lambdas.project.domain.utils.startwithandsizedstring;
+package com.lambdas.project.domain.utils.string;
 
 import java.util.*;
 import java.util.function.Supplier;

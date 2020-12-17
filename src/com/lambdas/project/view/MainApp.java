@@ -6,12 +6,11 @@ public class MainApp {
 
     private static Controller controller=Controller.getInstance();
 
-
     public static void main(String[] args) {
-
         new StartWithAndSizedView(controller).show();
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         new EvenOddView(controller).show();
+        new ContainCharacterView(controller).show();
+        new MonthNameView(controller).show();
 
     }
 }

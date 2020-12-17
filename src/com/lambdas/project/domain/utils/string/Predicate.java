@@ -1,4 +1,4 @@
-package com.lambdas.project.domain.utils.startwithandsizedstring;
+package com.lambdas.project.domain.utils.string;
 
 @FunctionalInterface
 public interface Predicate {

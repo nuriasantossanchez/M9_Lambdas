@@ -1,4 +1,4 @@
-package com.lambdas.project.domain.utils.evenoddnumber;
+package com.lambdas.project.domain.utils.number;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,14 +10,28 @@ import static java.util.stream.Collectors.joining;
 
 public class EvenOddUtils {
 
-    private final RandomNumber randomNumbers = new RandomNumber();
+    private final RandomNumber randomNumbers;
 
     private static IntPredicate evenIntPredicate = (int i) -> i % 2 == 0;
     private static IntPredicate oddIntPredicate = (int i) -> i % 2 != 0;
 
     public enum PrefixEvenOdd {
-        e,
-        o
+        EVEN("e"),
+        ODD("o");
+
+        private String prefix;
+
+        PrefixEvenOdd(String prefix) {
+            this.prefix=prefix;
+        }
+
+        public String getPrefix() {
+            return prefix;
+        }
+    }
+
+    public EvenOddUtils() {
+        randomNumbers = new RandomNumber();
     }
 
     public RandomNumber getRandomNumbers() {
@@ -38,9 +52,9 @@ public class EvenOddUtils {
         String result = "";
 
         BiFunction<Integer, IntPredicate, String> evenBiFunction =
-                (i, p)  -> PrefixEvenOdd.e.toString().concat(String.valueOf(i));
+                (i, p)  -> PrefixEvenOdd.EVEN.getPrefix().concat(String.valueOf(i));
         BiFunction<Integer, IntPredicate, String> oddBiFunction =
-                (i, p)  -> PrefixEvenOdd.o.toString().concat(String.valueOf(i));
+                (i, p)  -> PrefixEvenOdd.ODD.getPrefix().concat(String.valueOf(i));
 
         if(evenIntPredicate.test(number)){
             result = evenBiFunction.apply(number, evenIntPredicate);
@@ -73,10 +87,10 @@ public class EvenOddUtils {
         String evenOddNumber = "";
 
         if(evenIntPredicate.test(i)){
-            evenOddNumber=PrefixEvenOdd.e.toString().concat(String.valueOf(i));
+            evenOddNumber=PrefixEvenOdd.EVEN.getPrefix().concat(String.valueOf(i));
         }
         else if (oddIntPredicate.test(i)){
-            evenOddNumber=PrefixEvenOdd.o.toString().concat(String.valueOf(i));
+            evenOddNumber=PrefixEvenOdd.ODD.getPrefix().concat(String.valueOf(i));
         }
         return evenOddNumber;
     }

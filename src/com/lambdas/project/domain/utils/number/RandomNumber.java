@@ -1,4 +1,4 @@
-package com.lambdas.project.domain.utils.evenoddnumber;
+package com.lambdas.project.domain.utils.number;
 
 import java.util.ArrayList;
 import java.util.List;

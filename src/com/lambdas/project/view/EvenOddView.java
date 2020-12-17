@@ -39,7 +39,7 @@ public class EvenOddView {
 
     public void showEvenOddVarargsNumbers(){
         System.out.println();
-        System.out.println("Varargs Numbers = [0, 1, 1, 2, 3, 4, 4]");
+        System.out.println("Varargs Numbers = "+ Arrays.toString(new int[]{0, 1, 1, 2, 3, 4, 4}));
         System.out.println("-------------------------------------------");
         System.out.println("Even/Odd Varargs Numbers: ");
         System.out.println(controller.getEvenOddVarargsNumbers(0, 1, 1, 2, 3, 4, 4));

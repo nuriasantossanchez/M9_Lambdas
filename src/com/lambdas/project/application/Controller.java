@@ -1,21 +1,28 @@
 package com.lambdas.project.application;
 
-import com.lambdas.project.domain.utils.evenoddnumber.EvenOddUtils;
-import com.lambdas.project.domain.utils.evenoddnumber.RandomNumber;
-import com.lambdas.project.domain.utils.startwithandsizedstring.StartWithAndSizedPredicate;
-import com.lambdas.project.domain.utils.startwithandsizedstring.StartWithAndSizedUtils;
+import com.lambdas.project.domain.utils.datetime.MonthUtils;
+import com.lambdas.project.domain.utils.number.EvenOddUtils;
+import com.lambdas.project.domain.utils.number.RandomNumber;
+import com.lambdas.project.domain.utils.string.ContainCharacterUtils;
+import com.lambdas.project.domain.utils.string.StartWithAndSizedPredicate;
+import com.lambdas.project.domain.utils.string.StartWithAndSizedUtils;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 
 public class Controller {
     private static Controller instance=null;
     private StartWithAndSizedUtils startWithAndSizedUtils;
     private EvenOddUtils evenOddUtils;
+    private ContainCharacterUtils containCharacterUtils;
+    private MonthUtils monthUtils;
 
     private Controller() {
         startWithAndSizedUtils = new StartWithAndSizedUtils();
-        evenOddUtils =new EvenOddUtils();
+        evenOddUtils = new EvenOddUtils();
+        containCharacterUtils = new ContainCharacterUtils();
+        monthUtils = new MonthUtils();
     }
 
     public static Controller getInstance(){
@@ -47,12 +54,29 @@ public class Controller {
 
     public String getEvenOddRandomNumbers(){
         return evenOddUtils.getEvenOddNumbers();
-
     }
 
     public RandomNumber getRandomNumbers() {
         return evenOddUtils.getRandomNumbers();
     }
 
+    public String getStringIfContainCharacter(List<String> strings,
+                                              Supplier<Character> character){
+        return containCharacterUtils.getStringIfContainCharacter(strings, character);
+    }
+
+    public String getStringIfContainCharacterAndLengthMoreThanX(List<String> strings,
+                                                                Supplier<Character> character,
+                                                                Supplier<Integer> length){
+        return containCharacterUtils.getStringIfContainCharacterAndLengthMoreThanX(strings, character, length);
+    }
+
+    public void printMonthsWithLambda(){
+        monthUtils.printMonthsWithLambda();
+    }
+
+    public void printMonthsWithReferenceMethod(){
+        monthUtils.printMonthsWithReferenceMethod();
+    }
 
 }
