@@ -2,8 +2,10 @@ package com.lambdas.project.application;
 
 import com.lambdas.project.domain.utils.datetime.MonthUtils;
 import com.lambdas.project.domain.utils.number.EvenOddUtils;
+import com.lambdas.project.domain.utils.number.PiValueUtils;
 import com.lambdas.project.domain.utils.number.RandomNumber;
 import com.lambdas.project.domain.utils.string.ContainCharacterUtils;
+import com.lambdas.project.domain.utils.string.ReverseStringUtils;
 import com.lambdas.project.domain.utils.string.StartWithAndSizedPredicate;
 import com.lambdas.project.domain.utils.string.StartWithAndSizedUtils;
 
@@ -17,12 +19,16 @@ public class Controller {
     private EvenOddUtils evenOddUtils;
     private ContainCharacterUtils containCharacterUtils;
     private MonthUtils monthUtils;
+    private PiValueUtils piValueUtils;
+    private ReverseStringUtils reverseStringUtils;
 
     private Controller() {
         startWithAndSizedUtils = new StartWithAndSizedUtils();
         evenOddUtils = new EvenOddUtils();
         containCharacterUtils = new ContainCharacterUtils();
         monthUtils = new MonthUtils();
+        piValueUtils = new PiValueUtils();
+        reverseStringUtils = new ReverseStringUtils();
     }
 
     public static Controller getInstance(){
@@ -77,6 +83,13 @@ public class Controller {
 
     public void printMonthsWithReferenceMethod(){
         monthUtils.printMonthsWithReferenceMethod();
+    }
+
+    public void printPiValue(){
+        piValueUtils.printPiValue();
+    }
+    public void printReverseString(String string){
+        reverseStringUtils.printReverseString(string);
     }
 
 }

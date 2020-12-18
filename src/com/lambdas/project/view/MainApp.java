@@ -11,6 +11,8 @@ public class MainApp {
         new EvenOddView(controller).show();
         new ContainCharacterView(controller).show();
         new MonthNameView(controller).show();
+        new PiValueView(controller).show();
+        new ReverseStringView(controller).show();
 
     }
 }
